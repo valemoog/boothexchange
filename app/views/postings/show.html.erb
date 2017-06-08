@@ -1,0 +1,48 @@
+<div class="page-header">
+  <h3>Posting #<%= @posting.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @posting.name %></dd>
+
+      <dt>Date</dt>
+      <dd><%= @posting.date %></dd>
+
+      <dt>Price</dt>
+      <dd><%= @posting.price %></dd>
+
+      <dt>User</dt>
+      <dd><%= @posting.user.username %></dd>
+
+      
+
+      <dt>Event</dt>
+      <dd><%= @posting.event.name%></dd>
+
+      <dt>Location</dt>
+      <dd><%= @posting.location.name%></dd>
+
+      <dt>Time</dt>
+      <dd><%= @posting.time %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @posting.description %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/postings" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/postings/<%= @posting.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_posting/<%= @posting.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+<!-- Validation failure messages -->
+<% if @posting.errors.any? %>
+  <% @posting.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Posting #<%= @posting.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_posting/<%= @posting.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @posting.name %>">
+      </div>
+
+      <!-- Label and input for date -->
+      <div class="form-group">
+        <label for="date" class="control-label">
+          Date
+        </label>
+
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @posting.date %>">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @posting.price %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @posting.user_id %>">
+      </div>
+
+      <!-- Label and input for event_id -->
+      <div class="form-group">
+        <label for="event_id" class="control-label">
+          Event
+        </label>
+
+        <input type="text" id="event_id" name="event_id" placeholder="Event" class="form-control" value="<%= @posting.event_id %>">
+      </div>
+
+      <!-- Label and input for location_id -->
+      <div class="form-group">
+        <label for="location_id" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location_id" name="location_id" placeholder="Location" class="form-control" value="<%= @posting.location_id %>">
+      </div>
+
+      <!-- Label and input for time -->
+      <div class="form-group">
+        <label for="time" class="control-label">
+          Time
+        </label>
+
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @posting.time %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @posting.description %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Posting
+      </button>
+      or
+      <a href="/postings/<%= @posting.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

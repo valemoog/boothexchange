@@ -9,6 +9,7 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
+
         <th>Name</th>
         <th>Event</th>
         <th>Location</th>
@@ -19,18 +20,17 @@
 
       <% @postings.each do |posting| %>
       <tr>
-        <td><%= posting.name %></td>
+        <td>
+        <a href="/postings/<%= posting.id %>" ><%= posting.name %></a>
+        </td>
         <td><%= posting.event.name %></td>
         <td><%= posting.location.name %></td>
         <td><%= posting.date %></td>
         <td><%= posting.time %></td>
         <td><%= posting.price %></td>
-    
-        <td>
-          <a href="/postings/<%= posting.id %>" class="btn btn-primary">Show</a>
-          <a href="/postings/<%= posting.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_posting/<%= posting.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
+
+        
+
       </tr>
       <% end %>
     </table>

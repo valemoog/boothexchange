@@ -1,9 +1,16 @@
 <div class="page-header">
-  <h3>Posting #<%= @posting.id %></h3>
+  <h3>Posting for <%= @posting.name%></h3>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @posting.name %></div>
+  <div class="panel-body">
+<div class="row">
+  <div class="col-md-3 mb-2">
+  <img src="<%= @posting.image_url %>" class ="img-responsive"></td>
 </div>
 
-<div class="row">
-  <div class="col-md-12 mb-2">
+<div class="col-md-3 mb-2">
+
     <dl class="dl-horizontal">
       <dt>Name</dt>
       <dd><%= @posting.name %></dd>
@@ -13,11 +20,6 @@
 
       <dt>Price</dt>
       <dd><%= @posting.price %></dd>
-
-      <dt>User</dt>
-      <dd><%= @posting.user.username %></dd>
-
-      
 
       <dt>Event</dt>
       <dd><%= @posting.event.name%></dd>
@@ -31,18 +33,59 @@
       <dt>Description</dt>
       <dd><%= @posting.description %></dd>
 
-    </dl>
+    </div>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/postings" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/postings/<%= @posting.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_posting/<%= @posting.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+  <div class="col-md-3 mb-2">
+    <iframe
+      width="250"
+      height="250"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBPKOcpRE-H2MRDLBMkMRrK8OffQZVl3h8&q=<%= @posting.location.name %>+ <%=@posting.location.city%>+<%=@posting.location.state%>" allowfullscreen>
+    </iframe>
+
+</div>
+
+
+
+    <div class="col-md-3 mb-2">
+
+      <dt>User</dt>
+      <dd><%= @posting.user.username %></dd>
+
+      <dt>First Name</dt>
+      <dd><%= @posting.user.first_name%></dd>
+
+      <dt>Last Name</dt>
+      <dd><%= @posting.user.last_name%></dd>
+
+
+      <a href="/messages/new" class="btn btn-warning">
+        Send message to <%= @posting.user.username %> </a>
+
+      <a href="https://venmo.com/?txn=pay&amount=<%= @posting.price %>&note=<%= @posting.name %>&recipients=<%= @posting.user.venmo_username %>" class="btn btn-info"> Pay through Venmo </a>
+
+      </div>
+</div>
+</div>
+      </dl>
+      <div class="btn-group btn-group-justified">
+        <a href="/postings" class="btn btn-primary">
+          Back
+        </a>
+<% if current_user.id == @posting.user_id %>
+
+        <a href="/postings/<%= @posting.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_posting/<%= @posting.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+
+              <% else %>
+              <%end %>
+
+
+      </div>
     </div>
   </div>
 </div>

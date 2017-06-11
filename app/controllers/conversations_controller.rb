@@ -1,8 +1,8 @@
 class ConversationsController < ApplicationController
   def index
 
-    @users = User.all
     @conversations = Conversation.all
+
 
     render("conversations/index.html.erb")
   end
@@ -71,4 +71,5 @@ def destroy
     redirect_to(:back, :notice => "Conversation deleted.")
   end
 end
+
 end

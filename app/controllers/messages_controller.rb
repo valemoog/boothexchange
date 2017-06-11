@@ -68,4 +68,9 @@ class MessagesController < ApplicationController
       redirect_to(:back, :notice => "Message deleted.")
     end
   end
+
+
+
+
+
 end

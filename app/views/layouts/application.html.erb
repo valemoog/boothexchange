@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <title>Boothexchange</title>
 
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/journal/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
   <style>
-    /* Only necessary if you are using navbar-fixed-top */
-    body {
-      padding-top: 60px;
-    }
+  /* Only necessary if you are using navbar-fixed-top */
+  body {
+    padding-top: 60px;
+  }
   </style>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -34,26 +34,23 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand">Boothexchange</a>
+        <a href="/" class="navbar-brand">BoothExchange</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-
-          <li><a href="/postings">Postings</a></li>
-          <li><a href="/events">Events</a></li>
-          <li><a href="/conversations">Conversations</a></li>
+          <li><a href="/postings"> <i class="fa fa-id-card" aria-hidden="true"></i> Postings</a></li>
+          <li><a href="/events"><i class="fa fa-calendar-o" aria-hidden="true"></i> Events</a></li>
+          <li><a href="/conversations"><i class="fa fa-commenting" aria-hidden="true"></i> Conversations</a></li>
 
         </ul>
 
-
-
         <ul class="nav navbar-nav navbar-right">
           <% if current_user != nil %>
-        <li><a href="/users/edit"> <%= current_user.username %></a></li>
-        <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-sign-out" aria-hidden="true"></i>
-          Sign Out </a></li>
+          <li><a href="/users/edit"> <i class="fa fa-fw fa-edit"></i><%= current_user.username %></a></li>
+          <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><i class="fa fa-fw fa-sign-out"></i>Sign Out</a></li>
+
           <% else %>
 
           <li><a href="/users/sign_up">Sign Up</a></li>
@@ -66,17 +63,17 @@
 
   <div class="container">
     <% if notice.present? %>
-      <div class="alert alert-dismissable alert-success">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= notice %>
-      </div>
+    <div class="alert alert-dismissable alert-success">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= notice %>
+    </div>
     <% end %>
 
     <% if alert.present? %>
-      <div class="alert alert-dismissable alert-warning">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= alert %>
-      </div>
+    <div class="alert alert-dismissable alert-warning">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= alert %>
+    </div>
     <% end %>
 
     <%= yield %>

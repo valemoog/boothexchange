@@ -1,71 +1,96 @@
 <div class="page-header">
-  <h3>Conversation #<%= @conversation.id %></h3>
-</div>
 
-<div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>Sender</dt>
-      <dd><%= @conversation.sender_id %></dd>
+  <% if
+
+    @conversation.sender_id == current_user.id %>
+
+    <h3>Conversation with <%= @conversation.receiver.username %> </h3>
 
 
-      <% @conversation.messages.each do |message| %>
+    <% else %>
+
+    <h3> Conversation with <%= @conversation.sender.username %> </h3>
+
+    <% end %>
 
 
-      <dt>Sent at</dt>
-      <dd><%= message.created_at%></dd>
-      <dt>by</dt>
-      <dd><%= message.user.username %></dd>
-      <dt>Message</dt>
-      <dd><%= message.body %></dd>
-
-      <% end %>
-
-      <p>
+  </div>
 
 
-        <form action="/create_message" method="post">
+  <% @conversation.messages.each do |message| %>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-info">
+        <div class="panel-heading"> <%= message.user.username %>  <small><%= time_ago_in_words (message.created_at) %> ago</small></div>
 
-          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+        <div class="panel-body">
 
-          <% if
+          <!-- <dt>Sent at</dt>
+          <dd><%= message.created_at%></dd> -->
 
-            @conversation.sender_id == current_user.id %>
-
-            <input type="hidden" name="receiver_id" value="<%= @conversation.receiver_id%>">
-            <input type="hidden" name="sender_id" value="<%= @conversation.sender_id%>">
-
-            <% else %>
-            <input type="hidden" name="receiver_id" value="<%= @conversation.sender_id%>">
-            <input type="hidden" name="sender_id" value="<%= @conversation.receiver_id%>">
-
-            <% end %>
-
-            <input type="hidden" name="user_id" value="<%= current_user.id %>">
-
-            <input type="text" name="body" placeholder="Reply...">
-
-            <button class="btn btn-warning">
-              Send message
-            </button>
-
-
-          </form>
-        </p>
+          <dt></i>Message</dt>
+          <dd><%= message.body %></dd>
 
 
 
-      </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
 
+  <div class="row">
+    <div class="col-md-8">
+      <div class="panel panel-success">
+        <div class="panel-heading"> Send message </div>
+        <div class="panel-body">
+          <p>
+
+            <form action="/create_message" method="post">
+
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+              <% if
+
+                @conversation.sender_id == current_user.id %>
+
+                <input type="hidden" name="receiver_id" value="<%= @conversation.receiver_id%>">
+                <input type="hidden" name="sender_id" value="<%= @conversation.sender_id%>">
+
+                <% else %>
+                <input type="hidden" name="receiver_id" value="<%= @conversation.sender_id%>">
+                <input type="hidden" name="sender_id" value="<%= @conversation.receiver_id%>">
+
+                <% end %>
+
+                <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+
+                <div class="input-group">
+                  <input type="text" name="body" class="form-control"   placeholder="Reply...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-link">
+                      <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+
+
+              </form>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </dl>
+
+  <div class="row">
+    <div class="col-md-8">
       <div class="btn-group btn-group-justified">
         <a href="/conversations" class="btn btn-primary">
           Back
-        </a>
-        <a href="/conversations/<%= @conversation.id %>/edit" class="btn btn-warning">
-          Edit
-        </a>
-        <a href="/delete_conversation/<%= @conversation.id %>" class="btn btn-danger" rel="nofollow">
-          Delete
         </a>
       </div>
     </div>

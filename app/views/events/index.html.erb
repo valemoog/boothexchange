@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
     Events
-    <a href="/events/new" class="btn btn-lg btn-success">New Event</a>
+    <a href="/events/new" class="btn btn-md btn-success">New Event</a>
   </h1>
 </div>
 
@@ -17,12 +17,16 @@
 
       <% @events.each do |event| %>
       <tr>
-        <td>  <img src="<%= event.image_url %>" class ="img-responsive"></td>
+        <td>  <img src="<%= event.image_url %>" class ="img-responsive" width = "200"></td>
         <td><%= event.name %></td>
 
         <td>
-          <a href="/events/<%= event.id %>" class="btn btn-primary">Show</a>
-
+          <p>
+          <a href="/events/<%= event.id %>" class="btn btn-default btn-md form-control ">Show</a>
+        </p>
+        <p>
+          <a href="/events/<%= event.id %>/edit" class="btn btn-primary btn-md form-control ">Edit</a>
+        </p>
         </td>
       </tr>
       <% end %>

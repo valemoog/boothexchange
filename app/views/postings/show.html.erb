@@ -71,10 +71,11 @@
 
             <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
-            <input type="text" name="body" placeholder="Send a message...">
-
-            <button class="btn btn-warning">
-              Send message to <%= @posting.user.username %>
+            <input type="text" name="body" class="form-control input-md" placeholder="Send a message..." >
+</p>
+<p>
+            <button class="btn btn-warning btn-block">
+              <i class="fa fa-comment-o" aria-hidden="true"></i> Send message to <%= @posting.user.username %>
             </button>
 
 
@@ -82,7 +83,7 @@
         </p>
 
 
-        <a href="https://venmo.com/?txn=pay&amount=<%= @posting.price %>&note=<%= @posting.name %>&recipients=<%= @posting.user.venmo_username %>" class="btn btn-info"> Pay through Venmo </a>
+          <a href="https://venmo.com/?txn=pay&amount=<%= @posting.price %>&note=<%= @posting.name %>&recipients=<%= @posting.user.venmo_username %>" class="btn btn-info btn-block"> <i class="fa fa-vimeo" aria-hidden="true"></i> Pay through Venmo </a>
 
       </div>
     </div>

@@ -55,6 +55,7 @@ class PostingsController < ApplicationController
     @posting.location_id = params[:location_id]
     @posting.time = params[:time]
     @posting.description = params[:description]
+    @posting.image_url = params[:image_url]
 
     save_status = @posting.save
 

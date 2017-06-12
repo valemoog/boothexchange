@@ -46,12 +46,9 @@
       </div>
 
       <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
+      <div>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @posting.user_id %>">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @posting.user_id %>">
       </div>
 
       <!-- Label and input for event_id -->
@@ -60,7 +57,7 @@
           Event
         </label>
 
-        <input type="text" id="event_id" name="event_id" placeholder="Event" class="form-control" value="<%= @posting.event_id %>">
+        <%= select_tag(:event_id, options_from_collection_for_select(Event.all, :id, :name, @posting.event_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for location_id -->
@@ -69,7 +66,7 @@
           Location
         </label>
 
-        <input type="text" id="location_id" name="location_id" placeholder="Location" class="form-control" value="<%= @posting.location_id %>">
+          <%= select_tag(:location_id, options_from_collection_for_select(Location.all, :id, :name, @posting.location_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for time -->
@@ -88,6 +85,15 @@
         </label>
 
         <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @posting.description %>">
+      </div>
+
+      <!-- Label and input for Image URL -->
+      <div class="form-group">
+        <label for="image_url" class="control-label">
+          Picture
+        </label>
+
+        <input type="text" id="image_url" name="image_url" placeholder="Image URL" class="form-control" value="<%= @posting.image_url %>">
       </div>
 
       <button class="btn btn-warning">

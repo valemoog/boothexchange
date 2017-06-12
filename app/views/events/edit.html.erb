@@ -27,6 +27,15 @@
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @event.name %>">
       </div>
 
+      <!-- Label and input for image url-->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Picture
+        </label>
+
+        <input type="text" id="image_url" name="image_url" placeholder="Image URL" class="form-control" value="<%= @event.image_url %>">
+      </div>
+
       <button class="btn btn-warning">
         Update Event
       </button>

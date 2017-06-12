@@ -11,7 +11,7 @@
       <tr>
         <th>Conversation with</th>
         <th>Messages</th>
-        <th>Actions</th>
+
       </tr>
 
 
@@ -39,11 +39,7 @@
             <%= convo.messages.last.body.truncate(30)%>
 
           </td>
-          <td>
 
-            <a href="/conversations/<%= convo.id %>" class="btn btn-primary">Show</a>
-            <a href="/delete_conversation/<%= convo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-          </td>
         </tr>
 
 

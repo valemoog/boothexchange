@@ -42,17 +42,12 @@
           State
         </label>
 
-        <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @location.state %>">
+        <%= select_tag :state, options_for_select(us_states), :class => "form-control" %>
+
+        <!-- <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @location.state %>"> -->
       </div>
 
-      <!-- Label and input for image -->
-      <div class="form-group">
-        <label for="state" class="control-label">
-          Picture
-        </label>
 
-        <input type="text" id="image_url" name="image_url" placeholder="Image URL" class="form-control" value="<%= @location.image_url %>">
-      </div>
 
       <button class="btn btn-success">
         Create Location

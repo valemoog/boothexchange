@@ -42,6 +42,8 @@ class EventsController < ApplicationController
 
     @event.name = params[:name]
 
+    @event.image_url = params[:image_url]
+
     save_status = @event.save
 
     if save_status == true

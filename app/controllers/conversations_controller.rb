@@ -1,8 +1,8 @@
 class ConversationsController < ApplicationController
   def index
 
-    @conversations = Conversation.all
 
+     @conversations = Conversation.participating(current_user).order('updated_at DESC')
 
     render("conversations/index.html.erb")
   end
@@ -25,8 +25,8 @@ class ConversationsController < ApplicationController
 
     @conversation.user_id = params[:user_id]
     @conversation.posting_id = params[:posting_id]
-    @conversation.conversation_id = params[:conversation_id]
-    @conversation.body = params[:body]
+
+
 
     save_status = @conversation.save
 
@@ -36,8 +36,6 @@ class ConversationsController < ApplicationController
       render("conversations/new.html.erb")
     end
   end
-
-
 
 def edit
   @conversation = Conversation.find(params[:id])
@@ -71,5 +69,4 @@ def destroy
     redirect_to(:back, :notice => "Conversation deleted.")
   end
 end
-
 end

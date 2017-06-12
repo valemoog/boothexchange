@@ -25,7 +25,7 @@ class EventsController < ApplicationController
     save_status = @event.save
 
     if save_status == true
-      redirect_to("/events/#{@event.id}", :notice => "Event created successfully.")
+      redirect_to("/postings/new", :notice => "Event created successfully.")
     else
       render("events/new.html.erb")
     end

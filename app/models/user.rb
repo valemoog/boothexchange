@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
 has_many :messages, :dependent => :destroy
 has_many :postings, :dependent => :destroy
+has_many :conversations, :through => :users
 
-
+# def conversations
+#   Conversation.where("sender_id = ? OR receiver_id = ?", self.id, self.id)
+# end
 end

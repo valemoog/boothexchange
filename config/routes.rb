@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   # Routes for the Conversation resource:
 
-  root 'events#index'
+  root 'postings#index'
 
   # CREATE
-
 
   get "/conversations/new", :controller => "conversations", :action => "new"
   post "/create_conversation", :controller => "conversations", :action => "create"
@@ -24,7 +23,6 @@ Rails.application.routes.draw do
 
   # Routes for the Message resource:
   # CREATE
-
 
   get "/messages/new", :controller => "messages", :action => "new"
   post "/create_message", :controller => "messages", :action => "create"
@@ -91,7 +89,6 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_posting/:id", :controller => "postings", :action => "destroy"
   #------------------------------
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

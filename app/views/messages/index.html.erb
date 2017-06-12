@@ -15,7 +15,7 @@ message<div class="page-header">
 
       <% @messages.each do |message| %>
       <tr>
-        <td><%= message.name %></td>
+        <td><%= message.id %></td>
         <td>
           <a href="/messages/<%= message.id %>" class="btn btn-primary">Show</a>
           <a href="/messages/<%= message.id %>/edit" class="btn btn-warning">Edit</a>

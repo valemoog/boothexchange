@@ -1,4 +1,8 @@
 class MessagesController < ApplicationController
+
+  before_action :find_conversation, only:[:create]
+
+
   def index
     @messages = Message.all
 
@@ -18,11 +22,13 @@ class MessagesController < ApplicationController
   end
 
   def create
+
+
+
     @message = Message.new
 
     @message.user_id = params[:user_id]
-    @message.posting_id = params[:posting_id]
-    @message.conversation_id = params[:conversation_id]
+    @message.conversation_id = @conversation.id
     @message.body = params[:body]
 
     save_status = @message.save
@@ -69,7 +75,22 @@ class MessagesController < ApplicationController
     end
   end
 
+  def find_conversation
 
+    if Conversation.between(params[:sender_id],params[:receiver_id])
+      .present?
+      @conversation = Conversation.between(params[:sender_id],
+      params[:receiver_id]).first
+    else
+
+      @conversation = Conversation.new
+
+      @conversation.sender_id = params[:sender_id]
+      @conversation.receiver_id = params[:receiver_id]
+
+      @conversation.save
+    end
+  end
 
 
 
